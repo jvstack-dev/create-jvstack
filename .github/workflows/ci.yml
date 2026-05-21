@@ -36,7 +36,7 @@ jobs:
         run: npm run build
 
       - name: Scaffold template (non-interactive)
-        run: node dist/index.js ci-app a2r6bw
+        run: node dist/index.js ci-app a2r6bw --skip-git
 
       - name: Lint scaffolded app
         working-directory: ci-app

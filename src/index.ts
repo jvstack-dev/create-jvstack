@@ -153,13 +153,31 @@ async function promptText(message: string): Promise<string> {
   return value;
 }
 
+const isInteractive = process.stdin.isTTY && process.stdout.isTTY;
+
 async function read(options: { argvIndex: number; prompt: string; errorMessage: string }): Promise<string> {
-  const isInteractive = process.stdin.isTTY && process.stdout.isTTY;
   const fromArgv = process.argv[options.argvIndex]?.trim();
-  if (fromArgv) return fromArgv;
+  if (fromArgv && !fromArgv.startsWith("-")) return fromArgv;
   if (isInteractive) return promptText(options.prompt);
   console.error(colors.red(options.errorMessage));
   process.exit(1);
+}
+
+async function shouldInitializeGit(): Promise<boolean> {
+  if (process.argv.includes("--skip-git")) return false;
+  if (!isInteractive) return true;
+
+  const answer = await prompts.confirm({
+    message: "Initialize git repository?",
+    initialValue: true,
+  });
+
+  if (prompts.isCancel(answer)) {
+    prompts.cancel("Cancelled.");
+    process.exit(0);
+  }
+
+  return answer;
 }
 
 function resolveTarget(appNameInput: string): { root: string; appName: string } {
@@ -272,9 +290,11 @@ try {
   applyShadcnPreset(root, preset);
   prompts.log.success("Shadcn preset applied.");
 
-  prompts.log.step("Creating git repository...");
-  createInitialGitCommit(root);
-  prompts.log.success("Initial commit created.");
+  if (await shouldInitializeGit()) {
+    prompts.log.step("Creating git repository...");
+    createInitialGitCommit(root);
+    prompts.log.success("Initial commit created.");
+  }
 
   const rel = path.relative(process.cwd(), root) || ".";
   prompts.outro([`Next:`, `  ${colors.yellow(`cd ${rel}`)}`, `  ${colors.yellow("npx turbo dev")}`].join("\n"));
