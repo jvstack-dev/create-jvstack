@@ -40,11 +40,11 @@ jobs:
 
       - name: Lint scaffolded app
         working-directory: ci-app
-        run: npm run lint
+        run: npx turbo lint
 
       - name: Build scaffolded app
         working-directory: ci-app
-        run: npm run build
+        run: npx turbo build
 
       - name: Publish
         if: startsWith(github.ref, 'refs/tags/v')
