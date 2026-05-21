@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 25
+          cache: npm
+
+      - name: Install
+        run: npm ci
+      
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Scaffold template (non-interactive)
+        run: node dist/index.js ci-app a2r6bw
+
+      - name: Lint scaffolded app
+        working-directory: ci-app
+        run: npm run lint
+
+      - name: Build scaffolded app
+        working-directory: ci-app
+        run: npm run build

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "rsc": false,
+  "tsx": true,
+  "style": "radix-__SHADCN_PRESET_STYLE__",
+  "tailwind": {
+    "config": "",
+    "css": "lib/index.css",
+    "baseColor": "__SHADCN_PRESET_BASE_COLOR__",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "__SHADCN_PRESET_ICON_LIBRARY__",
+  "rtl": false,
+  "aliases": {
+    "components": "~ui/components",
+    "utils": "~ui/utils",
+    "ui": "~ui/components/ui",
+    "lib": "~ui",
+    "hooks": "~ui/hooks"
+  },
+  "menuColor": "__SHADCN_PRESET_MENU_COLOR__",
+  "menuAccent": "__SHADCN_PRESET_ACCENT_COLOR__",
+  "registries": {}
+}

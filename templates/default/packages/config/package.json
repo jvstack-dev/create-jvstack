@@ -1,0 +1,27 @@
+{
+  "name": "@__APP_NAME__/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint": {
+      "types": "./eslint.config.d.ts",
+      "default": "./eslint.config.js"
+    },
+    "./tsconfig": "./tsconfig.json"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-turbo": "^2.9.12",
+    "globals": "^17.6.0",
+    "oxfmt": "^0.48.0",
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.59.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

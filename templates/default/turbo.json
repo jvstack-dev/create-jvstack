@@ -1,0 +1,38 @@
+{
+  "$schema": "https://v2-9-14.turborepo.dev/schema.json",
+  "globalEnv": [
+    "CLERK_SECRET_KEY",
+    "CLERK_JWT_ISSUER_DOMAIN",
+    "CONVEX_DEPLOYMENT",
+    "CONVEX_URL",
+    "CONVEX_SITE_URL",
+
+    "VITE_CONVEX_URL",
+    "VITE_CLERK_PUBLISHABLE_KEY",
+  ],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "outputs": []
+    },
+    "lint:fix": {
+      "cache": false,
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "worker"]
+    },
+    "preview": {
+      "cache": false,
+      "dependsOn": ["build"]
+    },
+    "deploy": {
+      "cache": false,
+      "passThroughEnv": ["CONVEX_DEPLOY_KEY"]
+    },
+  }
+}

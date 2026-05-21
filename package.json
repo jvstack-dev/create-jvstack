@@ -1,0 +1,61 @@
+{
+  "name": "create-jvstack",
+  "description": "Scaffold a Turborepo + Convex + Clerk + Vite + React + Tanstack Query + Tanstack Router + Shadcn",
+  "author": "João Vitor Ceolin Prudente",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joao-vitor-prudente/create-jvstack.git"
+  },
+  "keywords": [
+    "create-jvstack",
+    "jvstack",
+    "vite",
+    "react",
+    "convex",
+    "clerk",
+    "shadcn",
+    "tanstack",
+    "scaffold"
+  ],
+  "version": "0.1.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "templates"
+  ],
+  "bin": {
+    "create-jvstack": "bin/create-jvstack.js"
+  },
+  "scripts": {
+    "build": "tsdown && node -e \"require('fs').renameSync('dist/index.mjs','dist/index.js')\" && node -e \"require('fs').renameSync('dist/index.mjs.map','dist/index.js.map')\"",
+    "dev": "tsdown --watch",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "tsdown": "^0.22.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.4"
+  }
+}
