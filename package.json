@@ -1,11 +1,15 @@
 {
-  "name": "create-jvstack",
+  "name": "@jvstack/create-jvstack",
   "description": "Scaffold a Turborepo + Convex + Clerk + Vite + React + Tanstack Query + Tanstack Router + Shadcn",
   "author": "João Vitor Ceolin Prudente",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joao-vitor-prudente/create-jvstack.git"
+    "url": "git+https://github.com/jvstack/create-jvstack.git"
+  },
+  "homepage": "https://github.com/jvstack/create-jvstack",
+  "bugs": {
+    "url": "https://github.com/jvstack/create-jvstack/issues"
   },
   "keywords": [
     "create-jvstack",

@@ -1,4 +1,4 @@
-# create-jvstack
+# @jvstack/create-jvstack
 
 Scaffold a Turborepo monorepo with Convex, Clerk, Vite, React, TanStack, and shadcn/ui.
 
